@@ -81,21 +81,14 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # NetworkManager
 systemctl enable NetworkManager
 
-# Chaotic-AUR (descarga keyring + mirrorlist)
-echo "[+] Agregando Chaotic-AUR..."
-pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
-pacman-key --lsign-key 3056513887B78AEB
-pacman -U --noconfirm \
-  'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' \
-  'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-echo '[chaotic-aur]' >> /etc/pacman.conf
-echo 'Include = /etc/pacman.d/chaotic-mirrorlist' >> /etc/pacman.conf
-pacman -Sy
-
-
 # Hyprland y apps
 echo "[+] Instalando entorno Hyprland..."
-pacman -S --noconfirm hyprland-bin kitty waybar thunar network-manager-applet firefox ttf-font-awesome noto-fonts
+echo "[+] Instalando Hyprland y herramientas..."
+pacman -S --noconfirm hyprland kitty waybar dunst rofi network-manager-applet \
+thunar tumbler thunar-archive-plugin thunar-volman gvfs \
+xdg-user-dirs xdg-desktop-portal-hyprland \
+pipewire wireplumber pipewire-audio pipewire-pulse \
+pamixer brightnessctl wl-clipboard polkit-gnome ttf-jetbrains-mono neofetch unzip
 
 # Instalar neofetch desde AUR
 echo "[+] Instalando neofetch desde AUR (puede tardar)..."
