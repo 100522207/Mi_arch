@@ -82,7 +82,6 @@ grub-mkconfig -o /boot/grub/grub.cfg
 systemctl enable NetworkManager
 
 # Hyprland y apps
-echo "[+] Instalando entorno Hyprland..."
 echo "[+] Instalando Hyprland y herramientas..."
 pacman -S --noconfirm hyprland kitty waybar dunst rofi network-manager-applet \
 thunar tumbler thunar-archive-plugin thunar-volman gvfs \
@@ -90,16 +89,6 @@ xdg-user-dirs xdg-desktop-portal-hyprland \
 pipewire wireplumber pipewire-audio pipewire-pulse \
 pamixer brightnessctl wl-clipboard polkit-gnome ttf-jetbrains-mono neofetch unzip
 
-# Instalar neofetch desde AUR
-echo "[+] Instalando neofetch desde AUR (puede tardar)..."
-sudo -u "$USUARIO" bash <<INNER
-cd ~
-git clone https://aur.archlinux.org/neofetch.git
-cd neofetch
-makepkg -si --noconfirm
-cd ..
-rm -rf neofetch
-INNER
 
 EOF
 
