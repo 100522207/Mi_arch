@@ -87,7 +87,7 @@ pacman -S --noconfirm hyprland kitty waybar dunst rofi network-manager-applet \
 thunar tumbler thunar-archive-plugin thunar-volman gvfs \
 xdg-user-dirs xdg-desktop-portal-hyprland \
 pipewire wireplumber pipewire-audio pipewire-pulse \
-pamixer brightnessctl wl-clipboard polkit-gnome ttf-jetbrains-mono neofetch unzip
+pamixer brightnessctl wl-clipboard polkit-gnome ttf-jetbrains-mono unzip
 
 
 EOF
