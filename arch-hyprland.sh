@@ -81,15 +81,17 @@ grub-mkconfig -o /boot/grub/grub.cfg
 # NetworkManager
 systemctl enable NetworkManager
 
-# Chaotic-AUR
-echo "[+] Añadiendo repositorio Chaotic-AUR..."
+# Chaotic-AUR (descarga keyring + mirrorlist)
+echo "[+] Agregando Chaotic-AUR..."
 pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 pacman-key --lsign-key 3056513887B78AEB
-pacman -U --noconfirm 'https://cdn.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst'
-pacman -U --noconfirm 'https://cdn.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
-echo '[chaotic-aur]
-Include = /etc/pacman.d/chaotic-mirrorlist' >> /etc/pacman.conf
+pacman -U --noconfirm \
+  'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' \
+  'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+echo '[chaotic-aur]' >> /etc/pacman.conf
+echo 'Include = /etc/pacman.d/chaotic-mirrorlist' >> /etc/pacman.conf
 pacman -Sy
+
 
 # Hyprland y apps
 echo "[+] Instalando entorno Hyprland..."
